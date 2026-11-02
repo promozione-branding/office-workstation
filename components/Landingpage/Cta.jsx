@@ -1,3 +1,5 @@
+'use client'
+import { handleCallClick } from "@/lib/track";
 import React from "react";
 
 const Cta = () => {
@@ -12,12 +14,12 @@ const Cta = () => {
       {/* Content */}
       <div className="relative z-10 text-center px-6 sm:px-12 md:px-20 max-w-5xl">
         <h2 className="text-white font-serif text-xl sm:text-3xl md:text-4xl font-bold mb-5 leading-snug">
-          Transform Your Workspace with  
+          Transform Your Workspace with
           <span className="text-amber-500 font-serif"> Dk Modular Contractor Office Furniture</span>
         </h2>
 
         <p className="text-white text-base sm:text-lg  mb-4 leading-relaxed">
-          From smart modular workstations to executive desks and ergonomic chairs,  
+          From smart modular workstations to executive desks and ergonomic chairs,
           we design office furniture that enhances productivity, comfort, and brand image.
         </p>
 
@@ -26,14 +28,14 @@ const Cta = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
+          <a onClick={() => handleCallClick({ source: "Website", obj: "N/A" })}
             href="tel:9999402424"
             className="inline-block bg-[#F7C600] text-black font-semibold px-4 py-3 rounded-full shadow-lg hover:bg-yellow-500 transition duration-300"
           >
             Get a Free Consultation
           </a>
 
-          
+
         </div>
       </div>
     </section>

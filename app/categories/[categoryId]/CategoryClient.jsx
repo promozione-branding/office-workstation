@@ -1,12 +1,14 @@
+"use client";
 import { categories } from "@/Data";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import CategoryCitySection from "@/components/CategoryCitySection";
 import React from "react";
+import { handleWhatsappClick } from "@/lib/track";
 
-export default function CategoryPage({ params }) {
-  const { categoryId } = params;
+export default async function CategoryPage({ params }) {
+  const { categoryId } = await params;
   const category = categories.find((c) => c.id === categoryId);
 
   const renderText = (content) => {
@@ -308,7 +310,7 @@ export default function CategoryPage({ params }) {
               flexibility and superior performance.
             </p>
 
-            <a
+            <a onClick={() => handleWhatsappClick({ source: "Website", obj: category.name || "N/A" })}
               href="https://wa.me/9999402424"
               className="inline-flex mt-8 rounded-lg bg-amber-600 px-8 py-3 font-semibold text-white transition hover:bg-amber-700"
             >
@@ -322,14 +324,14 @@ export default function CategoryPage({ params }) {
         category.id == "modular-office-workstation" ||
         category.id == "office-workstation" ||
         category.id == "meeting-and-conference-room-table") && (
-        <CategoryCitySection
-          id={
-            category.id == "meeting-and-conference-room-table"
-              ? "office-tables"
-              : category.id
-          }
-        />
-      )}
+          <CategoryCitySection
+            id={
+              category.id == "meeting-and-conference-room-table"
+                ? "office-tables"
+                : category.id
+            }
+          />
+        )}
     </>
   );
 }

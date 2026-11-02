@@ -6,6 +6,7 @@ import Image from "next/image";
 import Head from "next/head";
 import Enquiry from "@/components/Enquiry";
 import { ArrowUpRight } from "lucide-react";
+import { handleCallClick, handleWhatsappClick } from "@/lib/track";
 
 export default function ProductPage({ params }) {
   const { productId } = React.use(params);
@@ -75,11 +76,10 @@ export default function ProductPage({ params }) {
                     key={index}
                     type="button"
                     onClick={() => setActiveImage(img)}
-                    className={`h-20 w-20 overflow-hidden rounded-lg border ${
-                      activeImage?.src === img.src
+                    className={`h-20 w-20 overflow-hidden rounded-lg border ${activeImage?.src === img.src
                         ? "border-black"
                         : "border-gray-200"
-                    }`}
+                      }`}
                   >
                     <Image
                       src={img.src}
@@ -142,7 +142,7 @@ export default function ProductPage({ params }) {
                 Enquire Now
               </button>
 
-              <a
+              <a onClick={() => handleWhatsappClick({ source: "Website", obj: product.name || "N/A" })}
                 href={`https://wa.me/+919999402424?text=Hello, I am interested in ${encodeURIComponent(
                   product.name,
                 )}`}
@@ -158,11 +158,11 @@ export default function ProductPage({ params }) {
 
         {/* ================= DESCRIPTION ================= */}
         <div className="rounded-2xl border bg-white p-3 md:p-8">
-         {!product?.cta && (
-           <h2 className="mb-8 font-serif text-2xl font-semibold text-black md:text-3xl">
-            Product Description
-          </h2>
-         )}
+          {!product?.cta && (
+            <h2 className="mb-8 font-serif text-2xl font-semibold text-black md:text-3xl">
+              Product Description
+            </h2>
+          )}
 
           <div className="space-y-6 leading-relaxed text-black">
             {product.description?.map((block, i) => {
@@ -259,7 +259,7 @@ export default function ProductPage({ params }) {
               }}
             />
 
-            <a
+            <a onClick={() => handleCallClick({ source: "Website", obj: product.name || "N/A" })}
               href="tel:+919999402424"
               className="mt-7 inline-flex items-center gap-2 rounded-xl bg-amber-500 px-7 py-3 font-semibold text-black transition hover:bg-amber-400"
             >

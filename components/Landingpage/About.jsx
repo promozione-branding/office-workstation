@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Truck, Headset, ShieldCheck, BadgeCheck } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { handleCallClick } from "@/lib/track";
 
 export default function About() {
   // Carousel images (place images in /public/officeimage/)
@@ -156,7 +157,7 @@ export default function About() {
                 Request a Quote
               </Link>
 
-              <a href="tel:9999402424" className="inline-flex items-center gap-3 px-4 py-2 bg-white/10 text-black rounded-lg">
+              <a onClick={() => handleCallClick({ source: "Website", obj: "N/A" })} href="tel:9999402424" className="inline-flex items-center gap-3 px-4 py-2 bg-white/10 text-black rounded-lg">
                 <span className="w-9 h-9 flex items-center justify-center rounded-full bg-[#F7C600] text-[#0b2545]">📞</span>
                 <div className="text-left">
                   <div className="text-xs text-black">Call 24/7</div>

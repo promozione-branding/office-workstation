@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { categories } from "@/Data";
+import { handleWhatsappClick } from "@/lib/track";
 
 export default function Navbar() {
   const [activeMenu, setActiveMenu] = useState(null);
@@ -19,11 +20,11 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-[#252531]/60 w-full border-b border-gray-200">
 
-    
-{/* 🔹 TOP BAR */}
-<div className="border-b border-gray-100">
-  <div
-    className="
+
+      {/* 🔹 TOP BAR */}
+      <div className="border-b border-gray-100">
+        <div
+          className="
       w-full mx-auto
       px-4
       h-14
@@ -31,58 +32,58 @@ export default function Navbar() {
       bg-[#252531]/95
       lg:px-10 lg:h-16
     "
-  >
-    {/* LEFT: Logo */}
-    <Link href="/" className="flex items-center mt-2">
-      <Image
-        className="rounded-full"
-        src="/logo.webp"
-        alt="Logo"
-        width={80}
-        height={50}
-        priority
-      />
-    </Link>
+        >
+          {/* LEFT: Logo */}
+          <Link href="/" className="flex items-center mt-2">
+            <Image
+              className="rounded-full"
+              src="/logo.webp"
+              alt="Logo"
+              width={80}
+              height={50}
+              priority
+            />
+          </Link>
 
-    {/* RIGHT: Actions (Mobile = row, Desktop = hidden here) */}
-    <div className="flex items-center gap-3 lg:hidden">
-      {/* WhatsApp */}
-      <a
-        href="https://wa.me/9999402424"
-        target="_blank"
-        aria-label="WhatsApp"
-        className="rounded-full bg-green-500 p-2 text-white shadow-sm"
-      >
-        <FaWhatsapp size={16} />
-      </a>
+          {/* RIGHT: Actions (Mobile = row, Desktop = hidden here) */}
+          <div className="flex items-center gap-3 lg:hidden">
+            {/* WhatsApp */}
+            <a onClick={() => handleWhatsappClick({ source: "Website", obj: "N/A" })}
+              href="https://wa.me/9999402424"
+              target="_blank"
+              aria-label="WhatsApp"
+              className="rounded-full bg-green-500 p-2 text-white shadow-sm"
+            >
+              <FaWhatsapp size={16} />
+            </a>
 
-      {/* Menu Toggle */}
-      <button
-        onClick={() => setMobileOpen(!mobileOpen)}
-        aria-label="Toggle menu"
-        className="text-white"
-      >
-        {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-      </button>
-    </div>
+            {/* Menu Toggle */}
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Toggle menu"
+              className="text-white"
+            >
+              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
 
-    {/* DESKTOP LINKS (UNCHANGED) */}
-    <div className="hidden lg:flex items-center gap-10 text-[13px] font-bold tracking-wide text-white">
-      <Link href="/" className="hover:text-amber-500 transition">Home</Link>
-      <Link href="/about-us" className="hover:text-amber-500 transition">About Us</Link>
-      <Link href="/blogs" className="hover:text-amber-500 transition">Blogs</Link>
-      <Link href="/contact-us" className="hover:text-amber-500 transition">Contact Us</Link>
+          {/* DESKTOP LINKS (UNCHANGED) */}
+          <div className="hidden lg:flex items-center gap-10 text-[13px] font-bold tracking-wide text-white">
+            <Link href="/" className="hover:text-amber-500 transition">Home</Link>
+            <Link href="/about-us" className="hover:text-amber-500 transition">About Us</Link>
+            <Link href="/blogs" className="hover:text-amber-500 transition">Blogs</Link>
+            <Link href="/contact-us" className="hover:text-amber-500 transition">Contact Us</Link>
 
-      <a
-        href="https://wa.me/9999402424"
-        target="_blank"
-        className="rounded-full bg-green-500 p-2.5 text-white shadow-sm hover:shadow-md transition animate-pulse"
-      >
-        <FaWhatsapp size={18} />
-      </a>
-    </div>
-  </div>
-</div>
+            <a onClick={() => handleWhatsappClick({ source: "Website", obj: "N/A" })}
+              href="https://wa.me/9999402424"
+              target="_blank"
+              className="rounded-full bg-green-500 p-2.5 text-white shadow-sm hover:shadow-md transition animate-pulse"
+            >
+              <FaWhatsapp size={18} />
+            </a>
+          </div>
+        </div>
+      </div>
 
 
 
@@ -177,7 +178,7 @@ export default function Navbar() {
             </div>
 
             {/* WhatsApp */}
-            <a
+            <a onClick={() => handleWhatsappClick({ source: "Website", obj: "N/A" })}
               href="https://wa.me/9999402424"
               target="_blank"
               className="flex items-center gap-2 text-green-600 font-bold"
